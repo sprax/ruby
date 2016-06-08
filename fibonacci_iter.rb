@@ -15,12 +15,12 @@ end
 
 count = 36
 if ARGV.length > 0
-  count = ARGV[0].to_i
+	count = ARGV[0].to_i
 end
 
 puts "First #{count} Fibonacci numbers using iteration:"
 count.times do |i|
-  f = fib_it(i)
-  printf "%3d  %d\n", i, f 
+	f = fib_it(i)
+	printf "%3d  %d\n", i, f 
 end
 
