@@ -1,5 +1,12 @@
+# utilities for pretty printing named hashes
+
 def const_var_name(str)
-  str.split.map { |i| i.capitalize }.join('_')
+  if str
+    str[0] = str[0].capitalize
+    str.gsub(/[^0-9A-Za-z_]/, '_')
+  else
+    '_'
+  end
 end
 
 def format_val(val, nil_val='')
