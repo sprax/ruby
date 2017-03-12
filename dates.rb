@@ -15,3 +15,4 @@ puts "string(#{tss}) => UTC date #{dt2}"
 dsz = "2017-03-01T00:00:00Z"
 tsz = DateTime.rfc3339(dsz).to_time.to_i
 puts "rfc3339 date string(#{dsz}) => Unix timestamp #{tsz}"
+
