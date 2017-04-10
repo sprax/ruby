@@ -18,5 +18,5 @@ used = arg.match(/(?i)add ticket ['"]?(.*)['"] for <@[0-9A-Z]{5,12}(?-i)|([a-z0-
 args = "add Ticket \"why is an orange?\" for <@U1YADV56J|sprax>"
 args.match(/(?i)add ticket ['"]?(.*)['"] for (<@[^\|]{5,}\|(?-i)([a-z0-9][a-z0-9._-]*>$))/)
 
-# /tallsprax Add ticKet "Why eat a peach?" for @sprax
+# /talla Add ticKet "Why eat a peach?" for @sprax
 
