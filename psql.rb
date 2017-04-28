@@ -1,4 +1,9 @@
 
+SELECT SUM(CAST(helpful AS Integer)) as helpy, SUM(1 - CAST(helpful AS Integer)) AS nopy, (COUNT(*) - count(helpful)) as nully from service_events;
+  helpy | nopy | nully 
+ -------+------+-------
+      7 |    3 |  1672
+
 
 SELECT DATE_TRUNC('week', created_at::date) AS week, count(*)
 FROM organizations
