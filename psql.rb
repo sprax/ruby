@@ -1,10 +1,22 @@
+SELECT DATE_TRUNC('week', mm.date)::date AS md, COUNT(DISTINCT mm.profile_id)
+FROM profile_message_metrics mm INNER JOIN (SELECT profile_id, MIN(DATE_TRUNC('week', date)::date) AS firstmd
+                                            FROM profile_message_metrics GROUP BY profile_id) xx
+                                ON mm.profile_id = xx.profile_id AND date_trunc('week', mm.date)::date = xx.firstmd
+WHERE mm.messages > 0
+GROUP BY (mm.profile_id, DATE_TRUNC('week', mm.date)::date);
+
+
+# Rails/ActiveRecord: Account.where(...).select(:id).to_sql; query = User.where("users.account_id IN (#{subquery})")
+
 
 # assistant_development=#
 SELECT  mm.profile_id, DATE_TRUNC('week', mm.date)::date AS md, SUM(mm.messages)
 FROM profile_message_metrics mm INNER JOIN (SELECT profile_id, MIN(DATE_TRUNC('week', date)::date) AS firstmd
                                             FROM profile_message_metrics GROUP BY profile_id) xx
-ON mm.profile_id = xx.profile_id AND date_trunc('week', mm.date)::date = xx.firstmd where mm.messages > 0
+ON mm.profile_id = xx.profile_id AND date_trunc('week', mm.date)::date = xx.firstmd
+WHERE mm.messages > 0
 GROUP BY (mm.profile_id, DATE_TRUNC('week', mm.date)::date);
+
 # profile_id |     md     | sum 
 #------------+------------+-----
 #          1 | 2017-03-20 |  11
