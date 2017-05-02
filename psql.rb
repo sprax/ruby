@@ -1,4 +1,18 @@
 
+# assistant_development=#
+SELECT  mm.profile_id, DATE_TRUNC('week', mm.date)::date AS md, SUM(mm.messages)
+FROM profile_message_metrics mm INNER JOIN (SELECT profile_id, MIN(DATE_TRUNC('week', date)::date) AS firstmd
+                                            FROM profile_message_metrics GROUP BY profile_id) xx
+ON mm.profile_id = xx.profile_id AND date_trunc('week', mm.date)::date = xx.firstmd where mm.messages > 0
+GROUP BY (mm.profile_id, DATE_TRUNC('week', mm.date)::date);
+# profile_id |     md     | sum 
+#------------+------------+-----
+#          1 | 2017-03-20 |  11
+#          2 | 2017-01-16 |  30
+#          (2 rows)
+
+
+
 SELECT SUM(CAST(helpful AS Integer)) as helpy, SUM(1 - CAST(helpful AS Integer)) AS nopy, (COUNT(*) - count(helpful)) as nully from service_events;
   helpy | nopy | nully 
  -------+------+-------
