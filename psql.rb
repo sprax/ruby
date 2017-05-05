@@ -25,7 +25,7 @@ GROUP BY (mm.profile_id, DATE_TRUNC('week', mm.date)::date);
 
 
 
-SELECT SUM(CAST(helpful AS Integer)) as helpy, SUM(1 - CAST(helpful AS Integer)) AS nopy, (COUNT(*) - count(helpful)) as nully from service_events;
+SELECT SUM(CAST(helpful AS Integer)) AS helpy, SUM(1 - CAST(helpful AS Integer)) AS nopy, (COUNT(*) - count(helpful)) AS nully from service_events;
   helpy | nopy | nully 
  -------+------+-------
       7 |    3 |  1672
