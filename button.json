@@ -1,0 +1,47 @@
+
+{
+    "text": "Would you like to play a game?",
+    "attachments": [
+        {
+            "text": "Choose a game to play",
+            "fallback": "You are unable to choose a game",
+            "callback_id": "wopr_game",
+            "color": "#3AA3E3",
+            "attachment_type": "default",
+            "actions": [
+                {
+                    "name": "game",
+                    "text": "Chess",
+                    "type": "button",
+                    "value": "chess"
+                },
+                {
+                    "name": "game",
+                    "text": "Falken's Maze",
+                    "type": "button",
+                    "value": "maze"
+                },
+                {
+                    "name": "game",
+                    "text": "Thermonuclear War",
+                    "style": "danger",
+                    "type": "button",
+                    "value": "war",
+                    "confirm": {
+                        "title": "Are you sure?",
+                        "text": "Wouldn't you prefer a good game of chess?",
+                        "ok_text": "Yes",
+                        "dismiss_text": "No"
+                    }
+                }
+            ]
+        }
+    ]
+}
+
+# all on one line:
+
+{ "text": "Would you like to play a game?", "attachments": [ { "text": "Choose a game to play", "fallback": "You are unable to choose a game", "callback_id": "wopr_game", "color": "#3AA3E3", "attachment_type": "default", "actions": [ { "name": "game", "text": "Chess", "type": "button", "value": "chess" }, { "name": "game", "text": "Falken's Maze", "type": "button", "value": "maze" }, { "name": "game", "text": "Thermonuclear War", "style": "danger", "type": "button", "value": "war", "confirm": { "title": "Are you sure?", "text": "Wouldn't you prefer a good game of chess?", "ok_text": "Yes", "dismiss_text": "No" } } ] } ] } 
+
+curl -X POST -H 'Content-type: application/json' --data '{"text":"Play me?","attachments":[{"text":"Choose","callback_id":"blargus","fallback":"fall","attachment_type":"default","actions":[{"name":"game","text":"chess","type":"button","value":"chess"}]}]}' https://hooks.slack.com/commands/T1YAXSVGA/196618402406/swENFMKrNqHKV4YyVRISV2R6
+
