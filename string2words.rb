@@ -14,11 +14,11 @@ $hDictionary = Hash.new
 def string2wordsFromBeg(string, wordsAlreadyParsed=[])
 
   if ($debug > 1)
-      puts "string2wordsFromBeg: string(#{string}) words(#{wordsAlreadyParsed})"
+    puts "string2wordsFromBeg: string(#{string}) words(#{wordsAlreadyParsed})"
   end
 
   # If this string is a word, just return it with any words already parsed.
-  if   isWord(string)
+  if isWord(string)
     wordsAlreadyParsed.push(string)
     return wordsAlreadyParsed
   end
@@ -32,15 +32,15 @@ def string2wordsFromBeg(string, wordsAlreadyParsed=[])
   end
   length = $MinWordLength;
   while (length < maxLength)
-      substr = string[0..length]
-      length += 1
-      if  isWord(substr)
-    wordsAlreadyParsed.push(substr)
-          moreWords = string2wordsFromBeg(string[length..999], wordsAlreadyParsed)
-          if  moreWords
-              return moreWords
-          end
+    substr = string[0..length]
+    length += 1
+    if isWord(substr)
+      wordsAlreadyParsed.push(substr)
+      moreWords = string2wordsFromBeg(string[length..999], wordsAlreadyParsed)
+      if  moreWords
+        return moreWords
       end
+    end
   end
   return nil          # string did not completely parse into words
 end
@@ -60,29 +60,29 @@ def string2wordsFromEnd(string, wordsAlreadyParsed=nil)
       string += " " + wordsAlreadyParsed;
     end
       return string
-    end
+  end
 
-    # Else divide the string into two parts, and if the 2nd part is a word, keep going.
-    # Use min and max word lengths to skip checking substrings that cannot be words.
-    maxIndex = string.length
-    minIndex = maxIndex - $MaxWordLength
-    if minIndex < 0
-       minIndex = 0
-    end
-    maxIndex -= $MinWordLength;
-    while (maxIndex > minIndex)
-      substr = string[maxIndex..999]
-      maxIndex -= 1
-      if isWord(substr)
-        if wordsAlreadyParsed
-          substr += " " + wordsAlreadyParsed;
-        end
+  # Else divide the string into two parts, and if the 2nd part is a word, keep going.
+  # Use min and max word lengths to skip checking substrings that cannot be words.
+  maxIndex = string.length
+  minIndex = maxIndex - $MaxWordLength
+  if minIndex < 0
+     minIndex = 0
+  end
+  maxIndex -= $MinWordLength;
+  while (maxIndex > minIndex)
+    substr = string[maxIndex..999]
+    maxIndex -= 1
+    if isWord(substr)
+      if wordsAlreadyParsed
+        substr += " " + wordsAlreadyParsed;
+      end
       moreWords = string2wordsFromEnd(string[0..maxIndex], substr)
       if moreWords
-      return moreWords
+        return moreWords
+      end
     end
-    end
-    end
+  end
   return nil          # string did not completely parse into words
 end
 
