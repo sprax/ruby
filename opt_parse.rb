@@ -21,18 +21,6 @@ class OptparseExample
     end
   end
 
-  #
-  # Return a structure describing the options.
-  #
-  def self.parse(args)
-    # The options specified on the command line will be collected in
-    # *options*.
-
-    @options = ScriptOptions.new
-    option_parser.parse!(args)
-    @options
-  end
-
   attr_reader :parser, :options
 
   def option_parser
@@ -65,6 +53,19 @@ class OptparseExample
         exit
       end
     end
+  end
+
+  #
+  # Return a structure describing the options.
+  #
+  def parse(args)
+    # The options specified on the command line will be collected in
+    # *options*.
+
+    @options = ScriptOptions.new
+    parser = option_parser
+    parser.parse!(args)
+    @options
   end
 
   def perform_inplace_option
@@ -134,6 +135,6 @@ class OptparseExample
   end
 
 end  # class OptparseExample
-options = OptparseExample.parse(ARGV)
+options = OptparseExample.new.parse(ARGV)
 pp options
 pp ARGV

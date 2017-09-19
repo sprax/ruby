@@ -2,6 +2,8 @@
 # Sprax Lines	2011 ?
 # Usage: ruby -w string2words.rb words.txt rainrajatacozapsrakezarfabetrainzany
 
+require 'optparse'
+
 $debug = 1;
 $WordCount = 0;
 $MinWordLength =  2;
