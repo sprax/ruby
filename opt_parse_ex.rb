@@ -4,6 +4,10 @@ options = {}
 OptionParser.new do |opts|
   opts.banner = "Usage: #{$0} [options]"
 
+  opts.on("-n", "--number", "Run numberously") do |v|
+    options[:verbose] = v
+  end
+
   opts.on("-v", "--[no-]verbose", "Run verbosely") do |v|
     options[:verbose] = v
   end
