@@ -21,3 +21,8 @@ print "opts: "
 p options
 print "ARGV: "
 p ARGV
+
+
+name = ARGV[0] || "Dave"
+
+p "Hello #{name}!"
