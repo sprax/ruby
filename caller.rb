@@ -4,7 +4,8 @@ class Calls
     puts("Calls.putter: ", num)
   end
 
-  def self.caller(num, meth = Calls.method(:putter))
+  # Use Calls.method(:putter) or self.method(:putter)
+  def self.caller(num, meth = self.method(:putter))
     meth.call(num)
   end
 end
