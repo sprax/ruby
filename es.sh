@@ -2,8 +2,17 @@
 # See: https://stackoverflow.com/questions/17029902/using-curl-post-with-variables-defined-in-bash-script-functions
 
 query_type=${1:-query_string}
-query_term=${2:-knowledge}
+query_term=${2:-"Group of Clojure"}
 def_fields=${3:-description}
+
+gen_fields()
+{
+  if $query_type = "query_string"; then
+      ", default_field: ${def_fields}"
+  else
+      ""
+  fi
+}
 
 gen_data()
 {
@@ -11,29 +20,15 @@ cat <<EOF
 {
     "query": {
         "$query_type": {
-            "query": "$query_term",
-            "default_field": "$def_fields"
+            "query": "$query_term"
+            $(gen_fields)
         }
     }
 }
 EOF
 } 
 
-# curl "http://localhost:9200/get-together/_search" -d "$(gen_data)"
-
-req_body=$(cat <<EOF
-{
-    "query": {
-        "$query_type": {
-            "query": "$query_term",
-            "default_field": "$def_fields"
-        }
-    }
-}
-EOF
-)
-
-curl -i -X POST "http://localhost:9200/get-together/_search" -d "$req_body"
+curl "http://localhost:9200/get-together/_search" -d "$(gen_data)"
 
 echo
 echo "query_type: $query_type"
