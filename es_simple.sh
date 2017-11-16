@@ -5,7 +5,8 @@ query_type=simple_query_string
 query_term=${1:-"from Denver"}
 def_field1=${2:-description}
 def_field2=${3:-name}
-def_operat=${4:-"OR|AND|PREFIX"}
+def_operat=${4:-AND}
+analyzer_1=${5:-standard}
 
 gen_data()
 {
@@ -15,7 +16,8 @@ cat <<EOF
     "$query_type" : {
         "query": "+($query_term | search) -frittata",
         "fields": ["$def_field1", "$def_field2"],
-        "default_operator": "and"
+        "default_operator": "and",
+        "analyzer": "$analyzer_1"
     }
   }
 }
