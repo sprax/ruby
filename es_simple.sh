@@ -2,7 +2,7 @@
 # See: https://stackoverflow.com/questions/17029902/using-curl-post-with-variables-defined-in-bash-script-functions
 
 query_type=simple_query_string
-query_term=${1:-"from Denver"}
+query_term=${1:-trom Denver}
 def_field1=${2:-description}
 def_field2=${3:-name}
 def_operat=${4:-AND}
@@ -14,10 +14,11 @@ cat <<EOF
 {
   "query": {
     "$query_type" : {
-        "query": "+($query_term | search) -frittata",
-        "fields": ["$def_field1", "$def_field2"],
-        "default_operator": "and",
-        "analyzer": "$analyzer_1"
+        "query"   : "+($query_term | search) -frittata",
+        "fields"  : ["$def_field1", "$def_field2"],
+        "analyzer": "$analyzer_1",
+        "lenient" : "false",
+        "default_operator": "and"
     }
   }
 }
@@ -31,5 +32,5 @@ echo "query_type: $query_type"
 echo "query_term: $query_term"
 echo "def_field1: $def_field1"
 echo "def_field2: $def_field2"
-echo "flags used: $multi_flag"
+echo "analyzer_1: $analyzer_1"
 
