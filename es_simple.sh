@@ -2,7 +2,7 @@
 # See: https://stackoverflow.com/questions/17029902/using-curl-post-with-variables-defined-in-bash-script-functions
 
 query_type=simple_query_string
-query_term=${1:-trom Denver}
+query_term=${1:-from Denver}
 def_field1=${2:-description}
 def_field2=${3:-name}
 def_operat=${4:-AND}
