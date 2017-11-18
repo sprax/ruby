@@ -7,20 +7,22 @@ def_field1=${2:-description}
 def_field2=${3:-name}
 def_operat=${4:-AND}
 analyzer_1=${5:-standard}
+do_explain=${6:-true}
 
 gen_data()
 {
 cat <<EOF
 {
-  "query": {
-    "$query_type" : {
-        "query"   : "+($query_term | search) -frittata",
-        "fields"  : ["$def_field1", "$def_field2"],
-        "analyzer": "$analyzer_1",
-        "lenient" : "false",
-        "default_operator": "and"
-    }
-  }
+    "query": {
+        "$query_type" : {
+            "query"   : "+($query_term | search) -frittata",
+            "fields"  : ["$def_field1", "$def_field2"],
+            "analyzer": "$analyzer_1",
+            "lenient" : "false",
+            "default_operator": "and"
+        }
+    },
+    "explain" : "$do_explain"
 }
 EOF
 } 
