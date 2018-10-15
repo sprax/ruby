@@ -20,25 +20,25 @@ def histarea(histogram, length)
             height = histogram[j]
             if (maxHeight < height)
                 maxHeight = height
-	    end
+        end
             maxFromLeft.push(maxHeight)
-	end
+    end
         maxHeight = $INT_MIN;
-	length -= 1;
-	length.downto(1) do |j|
+    length -= 1;
+    length.downto(1) do |j|
         # for j in (length-1, 0, -1)   # Do skip the first entry.
             height = histogram[j]
             if (maxHeight < height)
                 maxHeight = height
-	    end
+        end
             if (maxHeight > maxFromLeft[j]) then
                 area += maxFromLeft[j] - height;
             else
                 area += maxHeight - height;
-	    end
-	end
+        end
     end
-	    
+    end
+        
     return area;
 end
 
