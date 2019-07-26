@@ -1,3 +1,4 @@
+#!/usr/bin/env ruby
 # Ruby script to calculate the area of "water"
 # that would be trapped by a histogram. 
 # Translated from a Python script, histarea.py.
