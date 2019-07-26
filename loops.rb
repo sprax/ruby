@@ -1,3 +1,4 @@
+#!/usr/bin/env ruby
 # Ruby script using loops
 # that would be trapped by a histogram.
 
