@@ -9,3 +9,4 @@ class Calls
     meth.call(num)
   end
 end
+
