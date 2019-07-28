@@ -2,7 +2,8 @@
 
 require 'date'
 
-tsn = 1488352040
+# tsn = 1488352040
+tsn = Time.now
 
 dt1 = Time.at(tsn).to_datetime
 puts "fixnum(#{tsn}) => LTZ date #{dt1}"
