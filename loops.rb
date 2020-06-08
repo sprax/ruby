@@ -7,37 +7,40 @@ def main_loops()
     histogram = [-1, 2, 32, -4, 4, 44, 2, 38, 0]
     length = histogram.length;
 
+    puts "for j in 0 ... length:";
     for j in (0...length)	# same syntax works in Python
-      puts( histogram[j])
+        print(" ", histogram[j])
     end
 
-    puts "\nNow backwards downto:";
+    puts "\n\nNow backwards downto:";
     length.downto(0) do |j|
-      puts( histogram[j])
+        print(" ", histogram[j])
     end
 
-    puts "\nBackwards range.to_a.reverse:";
+    puts "\n\nBackwards range.to_a.reverse:";
     for j in (0...length).to_a.reverse do
-      puts( histogram[j])
+        print(' ', histogram[j])
     end
 
-    puts "\nBackwards until:";
+    puts "\n\nBackwards until:";
     j = length;
     begin
-	    j = j - 1;
-      puts( histogram[j])
+        j = j - 1;
+        printf(" %d", histogram[j])
     end until j == 0
 
-    puts "\nBackwards while:";
+    puts "\n\nBackwards while:";
     j = length - 1;
     while (j >= 0) do
-      puts( histogram[j])
-	    j -= 1;
+        print(" ", histogram[j])
+        j -= 1;
     end
 
+    puts "\n\n4.times do:"
     4.times do
-      puts "a"
+        print " a"
     end
+    puts
 
 end
 
