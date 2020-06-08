@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 # Ruby script to calculate the area of "water"
-# that would be trapped by a histogram. 
+# that would be trapped by a histogram.
 # Translated from a Python script, histarea.py.
 
 # default values.  Globals prefixed by dollar sign $:
@@ -21,32 +21,32 @@ def histarea(histogram, length)
             height = histogram[j]
             if (maxHeight < height)
                 maxHeight = height
-        end
+            end
             maxFromLeft.push(maxHeight)
-    end
-        maxHeight = $INT_MIN;
+        end
+    maxHeight = $INT_MIN;
     length -= 1;
     length.downto(1) do |j|
         # for j in (length-1, 0, -1)   # Do skip the first entry.
             height = histogram[j]
             if (maxHeight < height)
                 maxHeight = height
-        end
+            end
             if (maxHeight > maxFromLeft[j]) then
                 area += maxFromLeft[j] - height;
             else
                 area += maxHeight - height;
+            end
         end
     end
-    end
-        
+
     return area;
 end
 
 def main_histarea()
     histogram = [-1, 2, 32, -4, 4, 44, 2, 38, 0]
     length = histogram.length;
-    
+
     area = histarea(histogram, length);
     print("Area from histogram: ");
     puts(area);
@@ -67,4 +67,3 @@ def main()
 end
 
 main
-
